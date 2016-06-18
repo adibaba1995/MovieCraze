@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Movie Craze</string>
+    <string name="moviedb_base_url" translatable="false">http://api.themoviedb.org/</string>
+    <string name="sort_popularity_desc" translatable="false">popularity.desc</string>
+</resources>

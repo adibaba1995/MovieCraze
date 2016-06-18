@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion 'android-N'
+    buildToolsVersion '24.0.0-rc4'
+    defaultConfig {
+        applicationId "com.adisoftwares.moviecraze"
+        minSdkVersion 14
+        targetSdkVersion 'N'
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    buildTypes {
+        debug {
+            resValue "string", "tmdb_api_key", "50f4f0273b24e26d94e1666d0ab0cc21"
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue "string", "tmdb_api_key", "50f4f0273b24e26d94e1666d0ab0cc21"
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:24.0.0-alpha1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha3'
+    compile 'com.android.support:design:24.0.0-alpha1'
+    testCompile 'junit:junit:4.12'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support:support-annotations:24.0.0-alpha1'
+
+    // Dagger 2 and Compiler
+    compile 'com.google.dagger:dagger:2.0.1'
+    apt "com.google.dagger:dagger-compiler:2.0.1"
+    // Needed for @Generated annotation (missing in Android API jar)
+    // No longer needed in dagger >= 2.1-SNAPSHOT (github.com/google/dagger/issues/95)
+    compile 'javax.annotation:jsr250-api:1.0'
+
+    //Butterknife
+    compile 'com.jakewharton:butterknife:8.1.0'
+    apt 'com.jakewharton:butterknife-compiler:8.1.0'
+
+    //Retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+
+    //RX Android
+    compile 'io.reactivex:rxandroid:1.2.1'
+
+    //Glide
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+}
